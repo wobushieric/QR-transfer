@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dai.eric.qrtransfer.MainActivity">
+
+    <Button
+        android:id="@+id/btnDepScan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/txtUserName"
+        android:layout_below="@+id/txtWelcome"
+        android:layout_marginEnd="17dp"
+        android:layout_marginTop="57dp"
+        android:onClick="launchScanActivity"
+        android:text="Deposit Scan" />
+
+    <TextView
+        android:id="@+id/txtWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="18dp"
+        android:text="Welcome Back:" />
+
+    <TextView
+        android:id="@+id/txtUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtWelcome"
+        android:layout_alignBottom="@+id/txtWelcome"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/txtWelcome"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/btnTransfer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnDepScan"
+        android:layout_alignBottom="@+id/btnDepScan"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="49dp"
+        android:onClick="launchDepositActivity"
+        android:text="Tranfer" />
+
+    <Button
+        android:id="@+id/btnHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnDepScan"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="View Transfer History" />
+
+    <TextView
+        android:id="@+id/txtTransHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtWelcome"
+        android:layout_below="@+id/btnHistory"
+        android:layout_marginTop="18dp"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/btnSignOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtUserName"
+        android:layout_alignBottom="@+id/txtUserName"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="21dp"
+        android:onClick="signOut"
+        android:text="Sign Out" />
+
+</RelativeLayout>

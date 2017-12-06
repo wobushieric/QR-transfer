@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "334378182698",
+    "firebase_url": "https://qr-transfer-34d5f.firebaseio.com",
+    "project_id": "qr-transfer-34d5f",
+    "storage_bucket": "qr-transfer-34d5f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334378182698:android:e71f94132b082b80",
+        "android_client_info": {
+          "package_name": "com.dai.eric.qrtransfer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "334378182698-4pale3cn2dh6dl3af9udu6ugs9isrdsm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dai.eric.qrtransfer",
+            "certificate_hash": "92f9e02afde694ebfd6e81f5dada95c376395cf8"
+          }
+        },
+        {
+          "client_id": "334378182698-5s9tnu22de0189ea8cqd0ijfvrkv7jqr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBukppJ-_6b17drPbUxLjX79BUtIdO_KBA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "334378182698-5s9tnu22de0189ea8cqd0ijfvrkv7jqr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
