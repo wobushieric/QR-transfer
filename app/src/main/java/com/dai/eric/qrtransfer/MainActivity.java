@@ -27,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
@@ -80,14 +81,27 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                ArrayList<HashMap<String,String>> transferRecords = (ArrayList<HashMap<String,String>>) dataSnapshot.getValue();
+                HashMap<String, String> transferRecords = (HashMap<String, String>) dataSnapshot.getValue();
 
                 String transHistory = "";
 
-                for(HashMap<String,String> record: transferRecords){
+                String dateString = "";
+                String typeString = "";
 
-                    //Toast.makeText(MainActivity.this, record.get("type"), Toast.LENGTH_LONG).show();
-                    transHistory += "Date: " + record.get("date") + "  Flow: " + record.get("type") + "\n";
+                for(HashMap.Entry<String,String> record: transferRecords.entrySet()){
+
+                    Map.Entry<String, String> hashMapNode = record;
+
+                    for (int i = 0; i < 2; i++){
+                        if(((Map.Entry)((HashMap)((Map.Entry)hashMapNode).getValue()).entrySet().toArray()[i]).getKey().toString().equals("date")){
+                            dateString = ((Map.Entry)((HashMap)((Map.Entry)hashMapNode).getValue()).entrySet().toArray()[i]).getValue().toString();
+                        }
+                        else{
+                            typeString = ((Map.Entry)((HashMap)((Map.Entry)hashMapNode).getValue()).entrySet().toArray()[i]).getValue().toString();
+                        }
+                    }
+
+                    transHistory += "Date: " + dateString + "  Flow: " + typeString + "\n";
                 }
 
                 transHistoryView.setText(transHistory);

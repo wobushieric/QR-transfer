@@ -3,6 +3,7 @@ package com.dai.eric.qrtransfer;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,9 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class DepositActivity extends AppCompatActivity {
 
@@ -30,9 +34,6 @@ public class DepositActivity extends AppCompatActivity {
         qrCodePic = findViewById(R.id.qrImage);
         generateQRBTN = findViewById(R.id.btnGenerateQR);
         eTransferURL = findViewById(R.id.txtEURL);
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("History");
     }
 
     public void generateQR(View view) {
@@ -45,6 +46,23 @@ public class DepositActivity extends AppCompatActivity {
             qrCodePic.setImageBitmap(bitmap);
 
         } catch (WriterException e) {
+            Log.w("Eric", "Error occur when insert to database: " + e.toString());
+        }
+
+    }
+
+    public void finishTransfer(View view){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("History");
+
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+
+        TransferRecord newTransfer = new TransferRecord("out", timeStamp);
+
+        try{
+            myRef.push().setValue(newTransfer);
+
+        }catch (Exception e){
             e.printStackTrace();
         }
 

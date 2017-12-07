@@ -6,19 +6,19 @@ package com.dai.eric.qrtransfer;
 
 public class TransferRecord {
 
-    private int type;
+    private String type;
     private String date;
 
-    public TransferRecord(int type, String date){
+    public TransferRecord(String type, String date){
         this.type = type;
         this.date = date;
     }
 
-    public int getType(){
+    public String getType(){
         return this.type;
     }
 
-    public void setType(int type){
+    public void setType(String type){
         this.type = type;
     }
 

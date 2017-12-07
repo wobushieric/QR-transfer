@@ -35,11 +35,12 @@
         />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnFinishTransfer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="120dp"
-        android:text="Button" />
+        android:onClick="finishTransfer"
+        android:text="Complete" />
 </RelativeLayout>
