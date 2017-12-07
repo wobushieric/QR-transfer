@@ -8,10 +8,12 @@ public class TransferRecord {
 
     private String type;
     private String date;
+    private String userEmail;
 
-    public TransferRecord(String type, String date){
+    public TransferRecord(String type, String date, String userEmail){
         this.type = type;
         this.date = date;
+        this.userEmail = userEmail;
     }
 
     public String getType(){
@@ -28,6 +30,14 @@ public class TransferRecord {
 
     public void setDate(String date){
         this.date = date;
+    }
+
+    public String getUserEmail(){
+        return this.userEmail;
+    }
+
+    public void setUserEmail(String userEmail){
+        this.userEmail = userEmail;
     }
 
 }

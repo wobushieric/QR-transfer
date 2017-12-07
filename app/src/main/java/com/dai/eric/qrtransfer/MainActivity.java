@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private String mUsername;
     private String mPhotoUrl;
     private GoogleApiClient mGoogleApiClient;
+    private String mUserEmail;
 
     private TextView userName;
     private TextView transHistoryView;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             if (mFirebaseUser.getPhotoUrl() != null) {
                 mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
             }
+            mUserEmail = mFirebaseUser.getEmail();
         }
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -87,21 +89,28 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
                 String dateString = "";
                 String typeString = "";
+                String userEmailString = "";
 
                 for(HashMap.Entry<String,String> record: transferRecords.entrySet()){
 
                     Map.Entry<String, String> hashMapNode = record;
 
-                    for (int i = 0; i < 2; i++){
+                    int nodeSize = ((HashMap)((Map.Entry)hashMapNode).getValue()).entrySet().toArray().length;
+
+                    for (int i = 0; i < nodeSize; i++){
                         if(((Map.Entry)((HashMap)((Map.Entry)hashMapNode).getValue()).entrySet().toArray()[i]).getKey().toString().equals("date")){
                             dateString = ((Map.Entry)((HashMap)((Map.Entry)hashMapNode).getValue()).entrySet().toArray()[i]).getValue().toString();
                         }
-                        else{
+                        else if(((Map.Entry)((HashMap)((Map.Entry)hashMapNode).getValue()).entrySet().toArray()[i]).getKey().toString().equals("type")){
                             typeString = ((Map.Entry)((HashMap)((Map.Entry)hashMapNode).getValue()).entrySet().toArray()[i]).getValue().toString();
+                        }else{
+                            userEmailString = ((Map.Entry)((HashMap)((Map.Entry)hashMapNode).getValue()).entrySet().toArray()[i]).getValue().toString();
                         }
                     }
 
-                    transHistory += "Date: " + dateString + "  Flow: " + typeString + "\n";
+                    if(userEmailString.equals(mUserEmail)){
+                        transHistory += "Date: " + dateString + "  Flow: " + typeString + "\n";
+                    }
                 }
 
                 transHistoryView.setText(transHistory);

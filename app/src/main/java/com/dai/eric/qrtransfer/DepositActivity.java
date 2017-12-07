@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.BarcodeFormat;
@@ -54,10 +55,12 @@ public class DepositActivity extends AppCompatActivity {
     public void finishTransfer(View view){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("History");
+        FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
 
         String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        String currentUerEmail = mFirebaseAuth.getCurrentUser().getEmail();
 
-        TransferRecord newTransfer = new TransferRecord("out", timeStamp);
+        TransferRecord newTransfer = new TransferRecord("out", timeStamp, currentUerEmail);
 
         try{
             myRef.push().setValue(newTransfer);
