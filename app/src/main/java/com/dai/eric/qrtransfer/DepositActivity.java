@@ -26,6 +26,7 @@ public class DepositActivity extends AppCompatActivity {
     private Button generateQRBTN;
     private EditText eTransferURL;
     private Bitmap bitmap;
+    private Button finishTransferBTN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,9 @@ public class DepositActivity extends AppCompatActivity {
         qrCodePic = findViewById(R.id.qrImage);
         generateQRBTN = findViewById(R.id.btnGenerateQR);
         eTransferURL = findViewById(R.id.txtEURL);
+        finishTransferBTN = findViewById(R.id.btnFinishTransfer);
+
+        finishTransferBTN.setVisibility(View.GONE);
     }
 
     public void generateQR(View view) {
@@ -45,6 +49,8 @@ public class DepositActivity extends AppCompatActivity {
             bitmap = TextToImageEncode(eTransferURLString);
 
             qrCodePic.setImageBitmap(bitmap);
+
+            finishTransferBTN.setVisibility(View.VISIBLE);
 
         } catch (WriterException e) {
             Log.w("Eric", "Error occur when insert to database: " + e.toString());

@@ -21,7 +21,8 @@
         <activity android:name=".ScanActivity" />
         <activity android:name=".DepositActivity" />
         <activity android:name=".SignInActivity" />
-        <activity android:name=".TransferHistoryActivity"></activity>
+        <activity android:name=".TransferHistoryActivity" />
+        <activity android:name=".OnlineBankingActivity"></activity>
     </application>
 
 </manifest>

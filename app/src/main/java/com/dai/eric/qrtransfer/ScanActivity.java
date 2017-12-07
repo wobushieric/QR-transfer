@@ -172,7 +172,14 @@ public class ScanActivity extends AppCompatActivity implements MessageDialogFrag
             Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
             r.play();
         } catch (Exception e) {}
-        showMessageDialog("Contents = " + rawResult.getText() + ", Format = " + rawResult.getBarcodeFormat().toString());
+
+        //showMessageDialog("Contents = " + rawResult.getText() + ", Format = " + rawResult.getBarcodeFormat().toString());
+
+        Intent toOnlineBanking = new Intent(ScanActivity.this, OnlineBankingActivity.class);
+
+        toOnlineBanking.putExtra("link", rawResult.getText());
+
+        startActivity(toOnlineBanking);
     }
 
     public void showMessageDialog(String message) {
